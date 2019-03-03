@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="d-flex flex-column align-items-center  card m-2">
+  <p></p>
+  <h3 class=>Photos</h3>
+  <%if @picture.pic.attached?%>
+    <%= image_tag @picture.pic, alt: 'pic' %>
+  <%else%>
+    <p>=== Il n'y a pas encore d'images lié à ce produit ===</p>
+  <%end%>
+  <p></p>
+  <%= form_tag picture_pics_path(@picture), multipart: true do %>
+    <%= file_field_tag :pic %>
+    <%= submit_tag "uploader une photo" %>
+  <% end %>
+  <p></p>
+</div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @picture.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @picture.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @picture.price %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @picture.condition %>
+</p>
+
+<p>
+  <strong>Administrator:</strong>
+  <%= @picture.administrator_id %>
+</p>
+
+<%= link_to 'Ajoutez dans le panier', root_path %>
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Supprimer', picture_path(@picture), method: :delete %> |
+<%= link_to 'Back', root_path %>

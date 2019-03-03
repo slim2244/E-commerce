@@ -1,0 +1,53 @@
+<div class="container  pt-5">
+  <br>
+  <h1 class="text-center">Votre compte</h1>
+  <br>
+
+  <div class="d-flex flex-column align-items-center  card m-2">
+    <p></p>
+    <h3 class=>Avatar actuel</h3>
+    <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar' %>
+    <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+    <%end%>
+    <p></p>
+    <%= form_tag user_avatars_path(@user), multipart: true do %>
+      <%= file_field_tag :avatar %>
+      <%= submit_tag "uploader l'avatar" %>
+    <% end %>
+    <p></p>
+  </div>
+  <br>
+  <div class="card ">
+    <div class="card-body p-0 m-0">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Votre prénom</th>
+            <td><%=@user.first_name  %></td>
+          </tr>
+          <tr>
+            <th scope="row">Votre nom de famille</th>
+            <td><%=@user.last_name  %></td>
+          </tr>
+          <tr>
+            <th scope="row">Votre email</th>
+            <td> <%= @user.email %></td>
+          </tr>
+          <tr>
+            <th scope="row">Votre description</th>
+            <td><%=@user.description  %></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <br>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Modifier", edit_user_registration_path(@user), class: "btn btn-outline-dark mb-3 mt-n3 " %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
